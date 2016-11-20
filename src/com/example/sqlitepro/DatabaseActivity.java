@@ -165,4 +165,25 @@ public class DatabaseActivity extends Activity implements OnClickListener {
 		System.out.println(">>>>>>>>>>>Response:" + res);
 
 	}
+	
+	 public Cursor getAllRecords() {
+
+        SQLiteDatabase database = null;
+        Cursor cursor = null;
+
+        try {
+            database = getReadableDatabase();
+
+            String result = "select * from " + TABLE_NAME + "";
+
+            cursor = database.rawQuery(result, null);
+
+            database.execSQL(result);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cursor;
+    }
+
 }
